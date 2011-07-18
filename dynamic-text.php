@@ -43,7 +43,7 @@ class DynamicText
 	//
 	// first level = param names
 	// second level = possible values for param (including a default)
-	// thid level = for this param/value, specify a value for each shortcode in $_textblocks
+	// third level = for this param/value, specify a value for each shortcode in $_textblocks
 	//
 	// TODO: move this into a more sane data structure
 	protected $_params = array(
