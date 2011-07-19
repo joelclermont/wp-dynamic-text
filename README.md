@@ -9,6 +9,13 @@ Possible uses
 -------------
 If you have geographically targeted Google AdWords campaigns, you can show a different phone number based on which ad they clicked.
 
+Installation
+------------
+* Download the latest code from github
+* If this is a new install, create a new configuration.php file (You can use configuration.example.php as a template)
+* Upload the plugin, including configuration, to your plugins directory (usually wp-content/plugins)
+* Enable the plugin from wp-admin
+
 To-do items
 -----------
 * Store the configuration data in a database instead of a PHP array
