@@ -31,47 +31,18 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 if ( ! class_exists( 'DynamicText' ) ) {
 class DynamicText
 {
-	// these are the short codes that will be
-	// handled by this plugin
-	protected $_shortcodes = array(
-		'phone',
-		'city',
-	);
-
-	// main configuration data
-	// maps parameters to values to shortcode substitutions
-	//
-	// first level = param names
-	// second level = possible values for param (including a default)
-	// third level = for this param/value, specify a value for each shortcode in $_textblocks
-	//
-	// TODO: move this into a more sane data structure
-	protected $_params = array(
-		'user'	=> array(
-			'joel'    => array(
-				'phone' => 'aaa-bbb-cccc',
-				'city'  => 'Grafton',
-			),
-			'scott'   => array(
-				'phone' => 'xxx-yyy-zzzz',
-				'city'  => 'Brookfield',				
-			),
-		),
-		'' => array( // this is our default if no param/value match
-			'default' => array(
-				'phone' => '414-555-1212',
-				'city'  => 'Somewhere',				
-			),			
-		),
-	 );
-
+	private $_shortcodes;
+	private $_params;
 	private $_paramName;
 	private $_paramValue;
 	
 	// initialize our shortcodes
 	// and set internal state based on the environment
-	public function __construct()
+	public function __construct( $dt_shortcodes, $dt_params )
 	{
+		$this->_shortcodes = $dt_shortcodes;
+		$this->_params     = $dt_params;
+		
 		$this->register_shortcodes();
 		$this->set_param();
 	}
@@ -143,4 +114,5 @@ class DynamicText
 }
 }
 // initialize our plugin
-$dynamicTextPlugin = new DynamicText();
+include_once( WP_PLUGIN_DIR.'/wp-dynamic-text/configuration.php' );
+$dynamicTextPlugin = new DynamicText( $dt_shortcodes, $dt_params );
