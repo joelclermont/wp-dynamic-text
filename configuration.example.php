@@ -86,8 +86,10 @@
 	
 	If a URL has multiple parameters, and the value for the first param doesn't match,
 	it will continue on to the next, and so on . . .
-		http://yoursite.com/?user=rasmus&color=green
-		matches color/green, not 'user' even though it's higher in the list. The value has no match
+	Example: http://yoursite.com/?user=rasmus&color=green
+	 This will match the color/green configuration, not the user configuration.
+	 Even though 'user' is higher priority, there is no value of 'rasmus' configured, so it keeps trying to match
+	 and it finds color=green instead. The shortcode values defined in the third level under color/green will be used.
 	
 4. Each configuration should conclude with an empty parameter containing only one value: default.
 	It is used when no other configuration is matched.
